@@ -30,7 +30,7 @@
                         </tr>
                     </thead>
 
-                    <tbody>
+                    <tbody id="tbMedicine">
                     </tbody>
 
                 </table>
@@ -42,7 +42,7 @@
 
         <div class="row">
             <div class="col-md-6 col-sm-6  col-xs-6">
-                <button class="btn btn-success mt-3" type="submit" value="submit"> save </button>
+                <button class="btn btn-success mt-3" id="save" type="submit" value="submit"> save </button>
 
             </div>
             <div class="col-md-6 col-sm-6  col-xs-6 d-md-flex justify-content-end">
@@ -72,7 +72,7 @@
 
 
         $(document).ready(function () {
-            var i = 0;
+            
             var disable = true;
 
 
@@ -81,9 +81,18 @@
                 $(this).closest('tr').remove();
             });
 
+            $("#save").hover(() => {
+                $("input").each(function (e) {
+                    console.log($(this).val());
+                });
+            })
+
 
             $("#Add").click(() => {
                 //var f = $("<input>").attr('type', 'textbox').attr('name', 'medicines[' + i + "]").attr('class', 'form-control medicine-input').attr('id', i);
+
+                var i = $("#tbMedicine").children("tr").length;
+
 
                 var element = "<tr><td><input class='form-control medicine-input' type ='textbox' name = 'medicines[" + i + "]' id =medicine" + i + " required></input></td>";
                 var days = "<td><input class='form-control medicine-input' type ='textbox' name = 'quantity[" + i + "]' id =quantity" + i + " required></input></td>";
@@ -94,7 +103,6 @@
                 console.log(i);
 
                 $(" tbody").append(element + days + quantity + times + action);
-                i++;
 
                 if (disable) {
                     disable = false;
