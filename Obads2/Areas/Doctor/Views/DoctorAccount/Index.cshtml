@@ -1,0 +1,277 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model  IPagedList<Obads2.Models.Appointment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Doctor/Views/Shared/_IndexLayout.cshtml";
+}
+
+
+
+<div class="mt-3" id="main">
+
+    <h2 class="mb-3 text-center">Appointments</h2>
+
+    <div class="container align-content-start">
+
+        @*<div class="row">
+                <div class="search_wrapper col-12">
+                    @using (Html.BeginForm("Index", "DoctorAccount", new { area = "Doctor" }, FormMethod.Post))
+                    {
+                        <snap>Search by date :</snap>
+                        <input type="text" name="date" id="date" readonly="readonly" />
+                        <div>
+                            <button type="submit" value="search" class="btn btn-primary col-2"><i class="fas fa-search"></i> Search</button>
+                            <button type="submit" value="all" class="btn btn-success col-3">Show All Appointments</button>
+                        </div>
+                    }
+                </div>
+
+            </div>*@
+        <div class="row ">
+
+            <div class="col-12">
+
+                <div class="table-responsive">
+                    <table id="myTable" class="display hover stripe">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Patient Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Date & Time</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Payment</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Prescription</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+
+                        @foreach (var ap in Model)
+                        {
+                            if (ap.patient != null)
+                            {
+
+                                var time = ap.AppointmentTime.ToString().Split(' ');
+
+                                <tr>
+                                    <td scope="row">@ap.AppointmentId</td>
+                                    <td> @Html.ActionLink(ap.doctor.User.Name, "DoctorProfile", "Home", new { id = ap.doctor.Id, area = "" }, new { @class = "text-decoration-none" })  </td>
+                                    <td>@ap.patient.User.Gender</td>
+                                    <td>@time[0] @time[1] @time[2]</td>
+                                    <td>@ap.patient.User.Email</td>
+                                    <td>@ap.payment.paymentMethod</td>
+                                    <td>@ap.payment.amount</td>
+
+                                    @if (String.IsNullOrEmpty(ap.prescription.FileURL))
+                                    {
+                                        <td>Not Available Yet!</td>
+                                    }
+                                    else
+                                    {
+                                        <td> @Html.ActionLink("Download", "DownloadPrescription", "DoctorAccount", new { area = "Doctor", id = ap.prescription.PrescriptionId }, new { @class = "text-center" })</td>
+                                    }
+
+
+                                    <td>@Html.ActionLink("Add Prescription", "AddPrescription", "DoctorAccount", new { id = ap.prescription.PrescriptionId, area = "Doctor" }, new { @class = "text-decoration-none" })</td>
+                                </tr>
+
+                            }
+                        }
+                    </table>
+                </div>
+
+
+
+            </div>
+
+
+            @*<ul class="pagination mt-3">
+
+                    @if (Model.PageNumber > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber-1 })">Previous</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber-1 })">Previous</a>
+                        </li>
+                    }
+
+
+                    @for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        <li class="@(i == Model.PageNumber ? "page-item active" : "page-item")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                        </li>
+
+                    }
+
+                    @if (Model.PageNumber < Model.PageCount)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber+1 })">Next</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber+1 })">Next</a>
+                        </li>
+                    }
+
+
+                </ul>*@
+        </div>
+        @*<div class="row ">
+
+                @foreach (var ap in Model)
+                {
+                    if (ap.patient != null)
+                    {
+                <div class="row col-12">
+                    <div class="appointment_wrapper col-6">
+                        @{
+                            var time = ap.AppointmentTime.ToString().Split(' ');
+                        }
+                        <p><i class="fas fa-user"></i> @ap.patient.User.Name</p>
+                        <p><i class="fas fa-at"></i> @ap.patient.User.Email</p>
+                        <p><i class="fas fa-clock"></i> Date : @time[0]</p>
+                        <p><i class="far fa-calendar-alt"></i> Time : @time[1] @time[2]</p>
+                        <button class="btn btn-danger"> @Html.ActionLink("Cancel", "Cancel", "DoctorAccount", new { id = ap.AppointmentId, area = "Doctor" }, new { @class = "text-decoration-none", onclick = "return confirm('Do you want to delete cancel this appointment?');" })</button>
+                    </div>
+
+                </div>
+
+
+
+                    }
+                }
+
+                <ul class="pagination mt-3">
+
+                    @if (Model.PageNumber > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber-1 })">Previous</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber-1 })">Previous</a>
+                        </li>
+                    }
+
+
+                    @for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        <li class="@(i == Model.PageNumber ? "page-item active" : "page-item")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                        </li>
+
+                    }
+
+                    @if (Model.PageNumber < Model.PageCount)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber+1 })">Next</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber+1 })">Next</a>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>*@
+        @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+    <script type="text/javascript">
+
+        /* Set the width of the side navigation to 250px */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "300px";
+    }
+
+/* Set the width of the side navigation to 0 */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+
+
+        $(document).ready(function () {
+
+            $("#date").datepicker({
+                dateFormat: 'dd/mm/yy',
+                buttonImage: '@Url.Content("https://jqueryui.com/resources/demos/datepicker/images/calendar.gif")',
+                buttonImageOnly: true,
+                showOn: "both",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+
+                onSelect: function(dateText, inst) {
+                     /*alert(dateText);*/
+                }
+            });
+
+            $('#myTable').DataTable(
+                {
+                    responsive: true,
+                    autoWidth: true,
+                    //columns: [{
+                    //    "width": "25%",
+                    //}, {
+                    //    "width": "25%",
+                    //}, {
+                    //    "width": "25%",
+                    //}, {
+                    //    "width": "12%",
+                    //}, {
+                    //    "width": "12%",
+                    //}]
+                });
+
+
+
+            /*$.ajax({
+                type: 'POST',
+                url: "https://localhost:44320/Doctor/DoctorAccount/GetAppointments",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: (data) => {
+                    console.log(data);
+                }
+            });*/
+
+        });
+    </script>
+
+}
+
+
+

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://kit.fontawesome.com/1c17e31fd4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/timepicker@1.13.14/jquery.timepicker.css" />
+    <link href="~/Content/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid body-content">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <img src="~/Images/odabs_logo.png" style="width: 56px;height: 56px;">
+            <a class="navbar-logo" href="#">ODABS</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+
+                    @*<li class="nav-item">
+                        @Html.ActionLink("Help Center", "HelpCenter", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>*@
+
+                </ul>
+            </div>
+        </nav>
+
+        @RenderBody()
+        <hr />
+        @Html.Partial("_Footer");
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

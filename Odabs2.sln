@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Odabs2", "Obads2\Odabs2.csproj", "{DD07B3BF-0C91-427E-9DE5-A414F31A52B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD07B3BF-0C91-427E-9DE5-A414F31A52B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD07B3BF-0C91-427E-9DE5-A414F31A52B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD07B3BF-0C91-427E-9DE5-A414F31A52B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD07B3BF-0C91-427E-9DE5-A414F31A52B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDF60067-27B0-4400-BA45-8C74494F1876}
+	EndGlobalSection
+EndGlobal

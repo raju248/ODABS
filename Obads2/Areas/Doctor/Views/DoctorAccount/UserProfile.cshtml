@@ -1,0 +1,140 @@
+﻿@model Obads2.Models.ApplicationUser
+@{
+    ViewBag.Title = "DoctorProfile";
+    Layout = "~/Areas/Doctor/Views/Shared/_IndexLayout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success col-md-12 p-3 mt-3" role="alert">
+                @TempData["Success"]
+            </div>
+        }
+
+        <div class="col-md-6 col-sm-12">
+            <div class="admin-doctor-img-wrapper">
+                <img class="admin-doctor-img" src="@Model.doctor.ImageFilePath" />
+            </div>
+            <div class="p-3">
+                <a href="@Url.Action("Edit","DoctorAccount")" class="btn btn-block btn-outline-primary "> <i class="fas fa-edit"></i> Edit Profile</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 p-3">
+
+            <h3><i class="fas fa-user"></i> About</h3>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Name : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.Name </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Email : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.Email </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Phone : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.PhoneNumber </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Address : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.doctor.Address </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Gender : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.Gender </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Speciality : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.doctor.Speciality </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Available Time : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.doctor.StartTime - @Model.doctor.EndTime </label>
+                </div>
+            </div>
+            <hr />
+            <h3><i class="fas fa-user-graduate"></i> Education and Qualification</h3>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Institution : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.doctor.Education </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Passing Year : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">2010 </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Qualification : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.doctor.Qualification </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "300px";
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+    </script>
+
+}

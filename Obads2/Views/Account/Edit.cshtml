@@ -1,0 +1,94 @@
+﻿@model Obads2.Models.EditViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-7 mt-3 ">
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal ">
+                    <h2>Edit</h2>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.id)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-5" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.DateOfBirth, new { htmlAttributes = new { @class = "form-control", value = Model.DateOfBirth, placeholder = Model.DateOfBirth } })
+                            @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group ">
+                        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-5" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.Gender, ViewBag.Gender as SelectList, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-block btn-success" />
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Change Password", "ChangePassword", "Manage", new { area = "" }, new { @class = "btn btn-block btn-primary text-decoration-none text-white" })
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+    <script src="~/Content/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $('#DateOfBirth').datepicker({
+                dateFormat: 'dd-mm-yy'
+            });
+        });
+
+    </script>
+}

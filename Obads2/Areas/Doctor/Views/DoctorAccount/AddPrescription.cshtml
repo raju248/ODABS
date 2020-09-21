@@ -1,0 +1,109 @@
+﻿@model Obads2.Areas.Doctor.Models.PrescriptionViewModel
+@{
+    ViewBag.Title = "AddPrescription";
+    Layout = "~/Areas/Doctor/Views/Shared/_IndexLayout.cshtml";
+
+}
+
+<div class="container">
+
+    <h5 class="mt-3">Add Prescription for Appointment No. @Model.Id</h5>
+
+    @using (Html.BeginForm("AddPrescription", "DoctorAccount"))
+    {
+
+        <div class="row">
+            <div class="col-12 table-responsive">
+                @Html.HiddenFor(model => model.Id)
+
+                <table class="table table-striped" id="Medicine">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Days</th>
+                            <th scope="col">Times</th>
+                            <th scope="col">---</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+
+                </table>
+            </div>
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6  col-xs-6">
+                <button class="btn btn-success mt-3" type="submit" value="submit"> save </button>
+
+            </div>
+            <div class="col-md-6 col-sm-6  col-xs-6 d-md-flex justify-content-end">
+                <button type="button" id="Add" class="btn btn-outline-primary mt-3">Add new medicine</button>
+            </div>
+
+        </div>
+    }
+
+
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "300px";
+        }
+
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+
+        $(document).ready(function () {
+            var i = 0;
+            var disable = true;
+
+
+            $('table').on('click', 'tr button.remove', function (e) {
+                e.preventDefault();
+                $(this).closest('tr').remove();
+            });
+
+
+            $("#Add").click(() => {
+                //var f = $("<input>").attr('type', 'textbox').attr('name', 'medicines[' + i + "]").attr('class', 'form-control medicine-input').attr('id', i);
+
+                var element = "<tr><td><input class='form-control medicine-input' type ='textbox' name = 'medicines[" + i + "]' id =medicine" + i + " required></input></td>";
+                var days = "<td><input class='form-control medicine-input' type ='textbox' name = 'quantity[" + i + "]' id =quantity" + i + " required></input></td>";
+                var quantity = "<td><input class='form-control medicine-input' type ='textbox' name = 'days[" + i + "]' id =days" + i + " required></input></td>";
+                var times = "<td><input class='form-control medicine-input' type ='textbox' name = 'times[" + i + "]' id =times" + i + " required></input></td>";
+                var action = "<td> <button class='btn btn-outline-danger remove'>Remove</button></td></tr>";
+
+                console.log(i);
+
+                $(" tbody").append(element + days + quantity + times + action);
+                i++;
+
+                if (disable) {
+                    disable = false;
+                }
+            });
+
+
+            $(".Medicine > tbody:last-child").on('click', 'input', function (e) {
+                console.log($(this).val());
+            })
+
+        });
+
+    </script>
+}

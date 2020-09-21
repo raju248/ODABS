@@ -1,0 +1,147 @@
+﻿
+@model  IEnumerable<Obads2.Models.Appointment>
+
+@{
+    ViewBag.Title = "Appointments";
+}
+
+
+
+
+
+<div class="container">
+
+    @if (Model.Count() == 0)
+    {
+        <h3 class="m-3 text-center">You have no appointment history</h3>
+    }
+    else
+    {
+        <h2 class="text-center">Appointments</h2>
+        <div class="row justify-content-center">
+
+            <div class="table-responsive">
+                <table id="myTable" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Doctor Name</th>
+                            <th scope="col">Date & Time</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Payment</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Prescription</th>
+                        </tr>
+                    </thead>
+
+                    @foreach (var ap in Model)
+                    {
+                        if (ap.patient != null)
+                        {
+
+                            var time = ap.AppointmentTime.ToString("dd-MMMM-yy hh:mm tt");
+
+                            <tr>
+                                <th scope="row">@ap.AppointmentId</th>
+                                <td> @Html.ActionLink(ap.doctor.User.Name, "DoctorProfile", "Home", new { id = ap.doctor.Id, area = "" }, new { @class = "text-decoration-none" })  </td>
+                                <td>@time</td>
+                                <td>@ap.doctor.User.Email</td>
+                                <td>@ap.payment.paymentMethod</td>
+                                <td>@ap.payment.amount</td>
+                                <td>
+                                    @if (String.IsNullOrEmpty(ap.prescription.FileURL))
+                                    {
+                                        <a class="text-decoration-none text-dark">Not Available Yet</a>
+                                    }
+                                    else
+                                    {
+                                        @Html.ActionLink("Download", "DownloadPrescription", "Account", new { area = "", id = ap.prescription.PrescriptionId }, null)
+                                    }
+                                </td>
+
+                                @*<td>@Html.ActionLink("Join Session", "DoctorProfile", "Home", new { id = ap.doctor.Id, area = "" }, new { @class = "text-decoration-none" })</td>*@
+                                @*<td><button class="btn btn-danger "> @Html.ActionLink("Cancel", "Cancel", "DoctorAccount", new { id = ap.AppointmentId, area = "Doctor" }, new { @class = "text-white text-decoration-none", onclick = "return confirm('Do you want to delete cancel this appointment?');" })</button></td>*@
+                            </tr>
+
+                        }
+                    }
+
+                </table>
+            </div>
+
+            @*<ul class="pagination mt-3">
+
+                    @if (Model.PageNumber > 1)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Appointments", new { page = Model.PageNumber-1 })">Previous</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" href="@Url.Action("Appointments", new { page = Model.PageNumber-1 })">Previous</a>
+                        </li>
+                    }
+
+
+                    @for (int i = 1; i <= Model.PageCount; i++)
+                    {
+                        <li class="@(i == Model.PageNumber ? "page-item active" : "page-item")">
+                            <a class="page-link" href="@Url.Action("Appointments", new { page = i })">@i</a>
+                        </li>
+
+                    }
+
+                    @if (Model.PageNumber < Model.PageCount)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Appointments", new { page = Model.PageNumber+1 })">Next</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item disabled">
+                            <a class="page-link" href="@Url.Action("Appointments", new { page = Model.PageNumber+1 })">Next</a>
+                        </li>
+                    }
+
+
+                </ul>*@
+        </div>
+    }
+
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('#myTable').DataTable(
+                {
+                    responsive: true,
+                    autoWidth: true,
+                });
+
+
+
+        });
+    </script>
+
+}
+
+
+

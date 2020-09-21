@@ -1,0 +1,404 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<Obads2.Models.Doctor>
+@{
+    ViewBag.Title = "Doctor";
+}
+
+
+
+<div class="container">
+    <div class="">
+        <h2 class="mt-5 text-center">Available Doctors</h2>
+        <div class="row middle_section_body d-flex flex-md-row flex-sm-column-reverse justify-content-center">
+
+            <div class="col-sm-12 col-md-6 left-side">
+                @{
+                    foreach (var doctor in Model)
+                    {
+                        <div class="row justify-content-between">
+                            <div class="col-12  card_display">
+                                <div class="col-4 mr-2 doc_left_part">
+                                    <div class="card_img">
+                                        <img src=@(doctor.ImageFilePath.ToString()) alt="">
+
+                                    </div>
+                                    @Html.ActionLink("View details", "DoctorProfile", "Home", new { id = doctor.Id }, new { @class = "btn btn-block btn-outline-primary" })
+
+                                </div>
+
+                                <div class="col-8">
+                                    <div class="">
+                                        <h4 class="m-0">@doctor.User.Name</h4>
+                                        <p class="m-0">@doctor.Qualification</p>
+                                        <p class="m-0">@doctor.Qualification</p>
+                                        <p class="m-0">@doctor.Qualification</p>
+                                        <p class="m-0">@doctor.Qualification</p>
+                                        <p class="m-0">@doctor.Qualification</p>
+                                        <p class="m-0">@doctor.Qualification</p>
+                                    </div>
+                                    <div class="doc_button">
+
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <button class="btn btn-primary booking-button mt-2" id=@(doctor.Id.ToString())> <i class="far fa-bookmark"></i> Book for Appointment</button>
+                                        }
+                                        else
+                                        {
+                                            <button class="btn btn-primary mt-2"><i class="far fa-bookmark"></i> @Html.ActionLink("Book for Appointment", "Login", "Account", new { returnUrl = ViewContext.HttpContext.Request.Url.PathAndQuery }, new { @class = "text-decoration-none text-white" }) </button>
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+
+                <div class="row">
+                    <!-- doctor page  pagination section -->
+                    <nav aria-label="...">
+
+                        <ul class="pagination mt-3">
+
+                            @if (Model.PageNumber > 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("Doctor", new { page = Model.PageNumber-1 , search = Request.QueryString["search"]})">Previous</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="@Url.Action("Doctor", new { page = Model.PageNumber-1 , search = Request.QueryString["search"]})">Previous</a>
+                                </li>
+                            }
+
+
+                            @for (int i = 1; i <= Model.PageCount; i++)
+                            {
+                                <li class="@(i == Model.PageNumber ? "page-item active" : "page-item")">
+                                    <a class="page-link" href="@Url.Action("Doctor", new { page = i , search = Request.QueryString["search"]})">@i</a>
+                                </li>
+
+                            }
+
+                            @if (Model.PageNumber < Model.PageCount)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" href="@Url.Action("Doctor", new { page = Model.PageNumber+1 , search = Request.QueryString["search"]})">Next</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="@Url.Action("Doctor", new { page = Model.PageNumber+1, search = Request.QueryString["search"] })">Next</a>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </nav>
+
+                </div>
+
+                <!-- doctor page  pagination section -->
+
+            </div>
+            <!-- doctor page  side part section -->
+
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-12 ">
+                        <div class="side_body_form">
+                            <div class="form-box">
+
+                                @using (Html.BeginForm("Doctor", "Home", FormMethod.Get))
+                                {
+                                    <div class="row">
+                                        <div class="form-group col-12">
+                                            <input type="text" class="search-skill form-control search-field" name="search" id="Name" placeholder="Search Doctor Name, Speciality etc">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary search-btn" value="SearchBy"><i class="fas fa-search"></i> Search</button>
+
+                                        </div>
+                                    </div>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*<div class="col-md-4">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="side_body_form">
+                                <div class="form-box ">
+
+                                    @using (Html.BeginForm("Doctor", "Home", FormMethod.Get))
+                                    {
+                                        <div class="form-group">
+                                            <input type="text" class="search-skill form-control search-field" name="search" id="Name" placeholder="Search Doctor Name, Speciality etc">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary search-btn" value="SearchBy"><i class="fas fa-search"></i> Search</button>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="side_body">
+                                <div class="heading">
+                                    <h3> Speciality</h3>
+                                </div>
+                                <div class="specified_part_list">
+                                    <div class="specified_part_text">
+                                        <h3>Family Physician</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>Homeopathic</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>Dentist</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>Dietitian</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>Physiotherapy</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>Pediatric</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>General surgery</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>Orthopaedics</h3>
+                                    </div>
+
+                                    <div class="specified_part_text">
+                                        <h3>Otorhinolaryngologist / ENT</h3>
+                                    </div> <div class="specified_part_text">
+                                        <h3>Oncologist / Cancer Specialist</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>Diabetologist</h3>
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3><a href="/Home/Doctor?sp=Joint">Joint</a></h3>
+
+                                    </div>
+                                    <div class="specified_part_text">
+                                        <h3>Obstetrics and gynecology</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>*@
+        </div>
+
+    </div>
+</div>
+
+<!-- doctor page  side part section -->
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+
+        </div>
+        <div class="modal-body">
+
+            <div class="slot-selection-section form-group">
+                <p>
+                    Select a date :
+                    <input type="text" id="bookingDate" />
+                </p>
+
+                <p>
+                    Select a time :
+                    <select id="slot-time">
+                    </select>
+                </p>
+
+            </div>
+            <p>Payment Amount : 500 TK </p>
+            <div class="payment-method-section">
+                <p>Select Payment Method </p>
+                <input type="radio" id="bkash" name="paymentMethod" value="Bkash">
+                <img src="https://media-exp1.licdn.com/dms/image/C510BAQFYQ12drExNfw/company-logo_200_200/0?e=2159024400&v=beta&t=kwVkiwLCTVruaJnTtjBGIQPaJzcXZE5kwE7aFNdJAU4">
+                <input type="radio" id="visa" name="paymentMethod" value="Visa">
+                <img src="~/Images/visa.png">
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="card_img_sec">
+                @*@Html.ActionLink("Compelete Payment", "Index", "Payment", new { @class = "btn payment-btn" })*@
+                <button class="btn payment-btn"> Complete Payment </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="confirmModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close close_confirmModal">&times;</span>
+
+        </div>
+        <div class="modal-body">
+            <div class="text-center confirm-wrapper">
+                <i class="far fa-check-circle display-3 "></i>
+                <h1 class="mt-4 text-center">Payment Successful!</h1>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+    <script src="~/Content/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //$("#confirmModal").fadeIn();
+
+
+            console.log("hello");
+            var btnClicked;
+
+            $("#bookingDate").datepicker({
+                dateFormat: 'dd/mm/yy',
+                buttonImage: '@Url.Content("https://jqueryui.com/resources/demos/datepicker/images/calendar.gif")',
+                buttonImageOnly: true,
+                showOn: "both",
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                minDate: new Date(),
+                onSelect: function(dateText, inst) {
+                     //alert(dateText);
+                    $.ajax({
+                        method: "POST",
+                        data: JSON.stringify({ id: btnClicked, date: dateText, paymentMethod : "" }),
+                        url: "@Url.Action("getNextFreeTime", "Home", new { area = "" })",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: (data) => {
+
+                            console.log(data);
+
+                            $("#slot-time").find("option").remove().end();
+
+                            data.forEach((x) => {
+                                $("#slot-time").append(new Option(x.StartTime, x.StartTimeStamp));
+                            })
+                            }
+                    });
+                }
+            });
+            // Get the modal
+
+            var modal = document.getElementById("myModal");
+            var confirmModal = document.getElementById("confirmModal");
+
+            $(".doc_button .booking-button").click(function (e) {
+                btnClicked = e.target.id;
+                console.log("mara " + btnClicked);
+                $("#myModal").show();
+                $("#doctorid").html(String(btnClicked));
+                console.log($("#doctorid").text());
+            });
+
+
+
+            $(".payment-btn").click((e) => {
+                    e.preventDefault();
+                    var paymentMethod = $("input[name='paymentMethod']:checked").val();
+                    console.log(paymentMethod);
+                    var time = $("#slot-time").val();
+                console.log(time);
+
+                    $.ajax({
+                        method: "POST",
+                        url: "@Url.Action("Pay", "Home", new { area = "" })",
+                        data: JSON.stringify({ id: btnClicked, date: time, paymentMethod: paymentMethod }),
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: (data) => {
+                            console.log(data);
+                            $("#myModal").css("display", "none");
+                            //$("#confirmModal").show();
+                            $("#confirmModal").fadeIn();
+
+                        },
+                        error: (data) => {
+                        }
+                    });
+
+
+                });
+
+            // When the user clicks on <span> (x), close the modal
+
+            var x = $(".close").first();
+            x.click(() => {
+                $("#myModal").css("display", "none");
+            });
+
+            $(".close_confirmModal").click(() => {
+                $("#confirmModal").css("display", "none");
+            })
+
+            $("#close_modal").first().click(() => {
+                $("#myModal").css("display", "none");
+            });
+
+            $(window).click((e) => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+                if (event.target == confirmModal) {
+                    confirmModal.style.display = "none";
+                }
+            });
+
+
+        });
+
+
+
+
+    </script>
+}
+
+

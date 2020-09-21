@@ -1,0 +1,46 @@
+﻿@model Obads2.Models.Doctor
+@{
+    ViewBag.Title = "DoctorProfile";
+}
+
+
+
+<div class="doctor_profile_wrapper">
+
+    <div class="img_section">
+        <img src=@Model.ImageFilePath />
+        <h4>@Model.User.Name</h4>
+        <p>Consultant dasda dkasdjhas das dasjdhas asdjhasd asdas hdasd aksdhas daskj</p>
+    </div>
+
+    <div class="details_section">
+        <div class="sp_heading ">
+            <p class="underline"><i class="fas fa-briefcase-medical"></i> Speciality</p>
+        </div>
+        <div class=""><p>Orthopedics (Bone, Joint, Fracture)</p></div>
+        <hr>
+        <div class="sp_heading ">
+            <p class="underline"><i class="fas fa-university"></i> Education</p>
+        </div>
+        <div><p>@Model.Education</p></div>
+        <hr>
+
+        <div class="sp_heading ">
+            <p class="underline"><i class="fas fa-phone"></i> Phone</p>
+        </div>
+        <div><p>@Model.User.PhoneNumber</p></div>
+        <hr>
+
+        <div class="sp_heading ">
+            <p class="underline"><i class="fas fa-at"></i> Email</p>
+        </div>
+        <div><p>@Model.User.Email</p></div>
+        <hr />
+        <div class="sp_heading ">
+            <p class="underline"><i class="fas fa-clock"></i> Available Hours</p>
+        </div>
+        <div><p>@Model.StartTime - @Model.EndTime </p> </div>
+
+    </div>
+
+</div>

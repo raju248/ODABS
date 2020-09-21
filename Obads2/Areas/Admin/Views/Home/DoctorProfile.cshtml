@@ -1,0 +1,103 @@
+﻿@model Obads2.Models.Doctor
+@{
+    ViewBag.Title = "DoctorProfile";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-6 col-sm-12">
+            <div class="admin-doctor-img-wrapper">
+                <img class="admin-doctor-img" src="@Model.ImageFilePath" />
+            </div>
+            <div class="p-3">
+                <a href="@Url.Action("EditDoctorAccount","Home", new { id = Model.User.Id})" class="btn btn-block btn-outline-primary "> <i class="fas fa-edit"></i> Edit Profile</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12 p-3">
+
+            <h3><i class="fas fa-user"></i> About</h3>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Name : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.User.Name </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Email : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.User.Email </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Phone : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.User.PhoneNumber </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Address : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.Address </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Speciality : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.Speciality </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Available Time : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.StartTime - @Model.EndTime </label>
+                </div>
+            </div>
+            <hr />
+            <h3><i class="fas fa-user-graduate"></i> Education and Qualification</h3>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Institution : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.Education </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Passing Year : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">2010 </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <label class="control-label"> Qualification : </label>
+                </div>
+                <div class="col-12">
+                    <label class="">@Model.Qualification </label>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+

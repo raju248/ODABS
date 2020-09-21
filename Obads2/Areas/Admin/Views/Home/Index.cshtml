@@ -1,0 +1,42 @@
+﻿@model Obads2.Areas.Admin.Models.HomeViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container mt-2">
+
+    <h2>ODABS Statistics</h2>
+
+    <div class="row">
+        <div class="col-4 ">
+            <div class=" stats-card-body p-3">
+                <h4>Number of Doctors : </h4>
+                <p>@Model.numberOfDoctors</p>
+                @Html.ActionLink("Doctors List","Doctors","Home", new { area="Admin"}, new { @class="btn btn-block btn-dark"})
+
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class=" stats-card-body p-3">
+                <h4>Number of Patients : </h4>
+                <p>@Model.numberOfPatients</p>
+                @Html.ActionLink("Patients List", "Patients", "Home", new { area = "Admin" }, new { @class = "btn btn-block btn-dark" })
+
+            </div>
+
+        </div>
+
+        <div class="col-4 ">
+
+            <div class=" stats-card-body p-3">
+                <h4>Number of Appointments : </h4>
+                <p>@Model.numberOfAppointments</p>
+                @Html.ActionLink("Appointments List", "Appointments", "Home", new { area = "Admin" }, new { @class = "btn btn-block btn-dark" })
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

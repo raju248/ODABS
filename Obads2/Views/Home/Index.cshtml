@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<hr />
+<div class="home-banner">
+    <img src="~/Images/home_image.jpg" class="img-fluid" alt="Responsive image">
+    <p class="home-banner-text">Welcome!</p>
+</div>
+
+<hr />
+
+<section class="wrapper-our-doctor">
+    <h1 class="our_doctor_heading h1_border">Our Doctors</h1>
+    <div class="odabs_doctor row">
+
+        <div class="odabs_doctor_member col-sm-6 col-md-3">
+            <div class="odabs_doctor_img">
+                <img src="~/images/odabs_doc1.jpg">
+            </div>
+            <h5>Prof. Dr. Hasibur Rahman</h5>
+            <p>Skin Specialist</p>
+        </div>
+        <div class="odabs_doctor_member col-sm-6 col-md-3">
+            <div class="odabs_doctor_img">
+                <img src="~/images/odabs_doc1.jpg">
+            </div>
+            <h5>Prof. Dr. Hasibur Rahman</h5>
+            <p>Skin Specialist</p>
+        </div>
+        <div class="odabs_doctor_member col-sm-6 col-md-3">
+            <div class="odabs_doctor_img">
+                <img src="~/images/odabs_doc1.jpg">
+            </div>
+            <h5>Prof. Dr. Hasibur Rahman</h5>
+            <p>Skin Specialist</p>
+        </div>
+        <div class="odabs_doctor_member col-sm-6 col-md-3">
+            <div class="odabs_doctor_img">
+                <img src="~/images/odabs_doc1.jpg">
+            </div>
+            <h5>Prof. Dr. Hasibur Rahman</h5>
+            <p>Skin Specialist</p>
+        </div>
+    </div>
+</section>
+
+<hr />
+
+<section class="video_conference_wrapper">
+    <div class="video_conference">
+        <img src="/Images/video_conference.jpg" />
+        <div class="vc_text">
+
+            <h1 class="vc_heading"><span class="underline">Video Conference</span></h1>
+
+            <p>
+                Conduct a video consultation. You will be able to join video consultation and you can also share  your problem with appropriate doctor .
+                We are creating a room in where you are given a time within that time you will be able to discuss your problem your prescription and doctor will give there opinion about your problem and will try to give proper solution.
+            </p>
+            @Html.ActionLink("Book an appointment", "Index", "Doctor", null, new { @class = "vc_btn" })
+        </div>
+    </div>
+</section>
+
+<hr />
+
+<section class="help_center_wrapper">
+    <div class="help_center">
+        <div class="hc_text">
+            <h1 class="hc_heading"><span class="hc_heading_underline">Help Center</span></h1>
+            <p>
+                Any Kind of emergency you can contact us.
+                For any doctor, ambulance etc.
+            </p>
+            @Html.ActionLink("Contact us", "Index", "Doctor", null, new { @class = "hc_btn" })
+        </div>
+
+        <img src="/Images/help_center.jpg" />
+    </div>
+</section>
+
+<hr />
+
+@*<section class="blog_wrapper">
+    <div class="blog">
+        <div class="blog_text">
+            <h1 class="blog_heading blog_heading_underline">Blog</h1>
+        </div>
+    </div>
+
+    <div class="container" style="">
+        <div class="row">
+            <div class="col-md-4 blog_card d-flex align-items-stretch ">
+                <div class="blog_body">
+                    <div class="blog_img_wrapper">
+                        <img src="/Images/Blogs/17181516-l-1.jpeg" />
+                    </div>
+                    <div class="blog_text_wrapper">
+                        <div class="blog_card_title">
+                            <h2>Skin Care</h2>
+                        </div>
+                        <div class="blog_card_body_text">
+                            <p>
+                                this word is in the dictionary Sed nibh dictionary, commodo dsdshbds bhds hbdsbds dskjbn dsjhnd sj dskbd skbds
+                                jbdsjbdsn jds
+                                jhdnsjndsmn dsnjds
+                                dsndsmndsmn dsndsnds ndmsndsn dsnd ssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                                dsndsmnds n
+                                eget laoreet ut, fermentum at sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ac ex sit amet erat interdum molestie. Proin vehicula eleifend dolor, elementum gravida tortor maximus a. Suspendisse fringilla tincidunt odio ac volutpat. Aliquam iaculis nibh id mauris
+                            </p>
+                        </div>
+                    </div>
+                    @Html.ActionLink("Read More", "Index", "Doctor", null, new { @class = "btn_blog_read_more" })
+                </div>
+            </div>
+            <div class="col-md-4 blog_card d-flex align-items-stretch">
+                <div class="blog_body">
+                    <div class="blog_img_wrapper">
+                        <img src="/Images/Blogs/17181516-l-1.jpeg" />
+                    </div>
+                    <div class="blog_text_wrapper">
+                        <div class="blog_card_title">
+                            <h2>Skin Care</h2>
+                        </div>
+                        <div class="blog_card_body_text">
+                            <p>
+                                Sed nibh nunc, commodo eget laoreet ut, fermentum at sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ac ex sit amet erat interdum molestie. Proin vehicula eleifend dolor, elementum gravida tortor maximus a. Suspendisse fringilla tincidunt odio ac volutpat. Aliquam iaculis nibh id mauris
+                            </p>
+                        </div>
+                    </div>
+                    @Html.ActionLink("Read More", "Index", "Doctor", null, new { @class = "btn_blog_read_more" })
+                </div>
+            </div>
+            <div class="col-md-4 blog_card d-flex align-items-stretch">
+                <div class="blog_body">
+                    <div class="blog_img_wrapper">
+                        <img src="/Images/Blogs/17181516-l-1.jpeg" />
+                    </div>
+                    <div class="blog_text_wrapper">
+                        <div class="blog_card_title">
+                            <h2>Skin Care</h2>
+                        </div>
+                        <div class="blog_card_body_text">
+                            <p>
+                                Sed nibh nunc, commodo eget laoreet ut, fermentum at sem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed ac ex sit amet erat interdum molestie. Proin vehicula eleifend dolor, elementum gravida tortor maximus a. Suspendisse fringilla tincidunt odio ac volutpat. Aliquam iaculis nibh id mauris
+                            </p>
+                        </div>
+                    </div>
+                    @Html.ActionLink("Read More", "Index", "Doctor", null, new { @class = "btn_blog_read_more" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>*@
+
+
+
+
+

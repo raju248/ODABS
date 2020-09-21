@@ -1,0 +1,96 @@
+﻿@model Obads2.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "MyProfile";
+}
+
+
+
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-7 ">
+
+            @if (TempData["Success"] != null)
+            {
+                <p class="text-success"></p>
+                <div class="alert alert-success mt-3" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+            <div class="p-heading">
+                <h2 class="mt-3"><i class="fas fa-user"></i> My Profile</h2>
+                <button class="btn btn-primary text-right"><i class="fas fa-edit"></i> @Html.ActionLink("Edit Profile", "Edit", "AdminAccount", new { area = "Admin" }, new { @class = "" })</button>
+            </div>
+            <hr />
+
+            <div class="row ">
+
+                <div class="col-md-6 col-sm-12">
+
+                    <div class="admin-doctor-img-wrapper">
+
+                        <img class="admin-doctor-img" src="@Model.admin.ImagePath" />
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.PhoneNumber)*@
+                            Contact No
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.PhoneNumber)
+                        </dd>
+
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.dateOfBirth)*@
+                            Date of Birth
+                        </dt>
+
+                        <dd>
+                            @Model.dateOfBirth.Date.ToString("dd-MMMM-yyyy")
+                        </dd>
+
+                        <dt>
+                            @*@Html.DisplayNameFor(model => model.dateOfBirth)*@
+                            Gender
+                        </dt>
+
+                        <dd>
+                            @Model.Gender
+                        </dd>
+
+                    </dl>
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>

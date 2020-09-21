@@ -1,0 +1,1104 @@
+﻿body {
+    box-sizing: border-box;
+}
+
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 100%;
+}
+
+
+.navbar-logo {
+    font-weight: bold;
+    font-size: 40px;
+    color: #05C4F4;
+    padding-left: 20px;
+    text-decoration: none !important;
+    margin-right: 15px;
+}
+
+.nav-link {
+    font-weight: bold;
+    color: #000000 !important;
+}
+
+    .nav-link:hover {
+        color: #5c5756 !important;
+    }
+
+
+.home-banner {
+    position: relative;
+}
+
+.home-banner-text {
+    position: absolute;
+    top: 50%;
+    left: 64%;
+    font-size: 5.5vw;
+    line-height: 0;
+    font-weight: 700;
+}
+
+.wrapper-our-doctor {
+    margin: 20px 0px;
+    padding: 50px 0;
+    background: rgba(10,10,10,0.1);
+}
+
+.our_doctor_heading {
+    color: #41C7DB;
+    font-size: 40px;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    margin-bottom: 45px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.h1_border {
+    position: relative;
+    text-align: center;
+}
+
+    .h1_border:after {
+        position: absolute;
+        content: '';
+        height: 5px;
+        /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+        bottom: -8px;
+        /****** 
+       optional values below 
+       ******/
+        /* center - (optional) use with adjusting width   */
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        width: 14%;
+        background: #41C7DB;
+        /* optional animation */
+        -o-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+    }
+
+
+.odabs_doctor {
+    display: flex;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+}
+
+.odabs_doctor_member {
+    width: 20%;
+    text-align: center;
+}
+
+.odabs_doctor_img {
+    position: absolute;
+    box-sizing: border-box;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 190px; /* [1.1] Set it as per your need */
+    width: 100%;
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+    /*border: 1px solid red;*/
+    border-radius: 100%;
+}
+
+    .odabs_doctor_img img {
+        position: relative;
+        bottom: 11px;
+        transform-origin: 43% 46%;
+        transition: transform 1s, visibility .25s ease-in;
+    }
+
+
+    .odabs_doctor_img:hover img {
+        transform: scale(1.5);
+    }
+
+.video_conference_wrapper {
+    margin: 30px 0;
+    padding: 30px 0;
+}
+
+.video_conference {
+    display: flex;
+    justify-content: center;
+}
+
+    .video_conference img {
+        width: 30%;
+        margin-right: 40px;
+        border-radius: 3%;
+    }
+
+.vc_text {
+    width: 30%;
+}
+
+.vc_heading {
+    color: #41C7DB;
+    font-size: 40px;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    margin-bottom: 45px;
+    /*text-align: center;*/
+    /*padding-top: 15px;*/
+}
+
+.vc_btn {
+    display: block;
+    background: #05c4f4;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    /*margin: 0 auto;*/
+    color: white;
+    line-height: 25px;
+    text-decoration: none;
+}
+
+    .vc_btn:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+.underline {
+    text-decoration: none;
+    position: relative;
+}
+
+    .underline:after {
+        position: absolute;
+        content: '';
+        height: 5px;
+        /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+        bottom: -8px;
+        /****** 
+       optional values below 
+       ******/
+        /* center - (optional) use with adjusting width   */
+        margin: 0 auto;
+        left: 0;
+        /*right: 0;*/
+        width: 80%;
+        background: #41C7DB;
+        /* optional animation */
+        -o-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+    }
+
+.help_center_wrapper {
+    margin: 20px 0;
+    padding: 30px 0;
+    background: rgba(10,10,10,0.1);
+}
+
+.help_center {
+    display: flex;
+    justify-content: center;
+}
+
+    .help_center img {
+        width: 30%;
+        border-radius: 3%;
+    }
+
+.hc_text {
+    margin-right: 40px;
+}
+
+.hc_heading {
+    color: #41C7DB;
+    font-size: 40px;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    margin-bottom: 45px;
+    text-align: right;
+}
+
+
+.hc_heading_underline {
+    text-decoration: none;
+    position: relative;
+}
+
+    .hc_heading_underline:after {
+        position: absolute;
+        content: '';
+        height: 5px;
+        /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+        bottom: -8px;
+        /****** 
+       optional values below 
+       ******/
+        /* center - (optional) use with adjusting width   */
+        margin: 0 auto;
+        /*left: 0;*/
+        right: 0;
+        width: 80%;
+        background: #41C7DB;
+        /* optional animation */
+        -o-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+    }
+
+.hc_btn {
+    float: right;
+    background: #05c4f4;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    color: white;
+    line-height: 25px;
+    text-decoration: none;
+}
+
+    .hc_btn:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+
+.blog_wrapper {
+    margin: 20px 0px;
+    padding: 30px 0;
+}
+
+.blog_heading {
+    color: #41C7DB;
+    font-size: 40px;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+.blog_heading_underline {
+    text-decoration: none;
+    position: relative;
+}
+
+    .blog_heading_underline:after {
+        position: absolute;
+        content: '';
+        height: 5px;
+        /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+        bottom: -8px;
+        /****** 
+       optional values below 
+       ******/
+        /* center - (optional) use with adjusting width   */
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        width: 12%;
+        background: #41C7DB;
+        /* optional animation */
+        -o-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+    }
+
+
+
+.blog_body {
+    border: 1px solid red;
+    position: relative;
+}
+
+
+
+.blog_img_wrapper img {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.blog_card_title {
+    text-align: center;
+}
+
+.blog_card_body_text p {
+    margin-bottom: 10px;
+    text-align: justify;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+}
+
+
+.blog_text_wrapper {
+    box-sizing: border-box;
+    padding: 20px 20px 35px 20px;
+}
+
+.btn_blog_read_more {
+    text-align: center;
+    text-decoration: none;
+    background: #05c4f4;
+    position: absolute;
+    width: 90%;
+    height: 30px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid white;
+    color: white;
+    margin-bottom: 10px;
+}
+
+
+    .btn_blog_read_more:hover {
+        color: black;
+        text-decoration: none;
+    }
+
+.footer_body_icon {
+    display: flex;
+    justify-content: center;
+}
+
+.footer_icon {
+    margin: 10px 0px 10px 0px;
+    border-right: 2px solid rgba(17, 173, 220, 0.5);
+    padding: 10px 15px;
+}
+
+    .footer_icon:last-child {
+        border: none;
+    }
+
+.footer_body_link {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.what_we_treat_banner {
+    position: relative;
+}
+
+    .what_we_treat_banner img {
+        width: 100%;
+    }
+
+.what_we_treat_banner_text {
+    position: absolute;
+    top: 50%;
+    text-align: center;
+    left: 45%;
+    font-size: 6vw;
+    line-height: 0px;
+    font-weight: bold;
+    color: #05c4f4;
+}
+
+.description {
+    margin: 30px 0;
+    padding: 30px 0;
+}
+
+.description_title {
+    text-align: center;
+    color: #05c4f4;
+}
+
+.description_title_underline {
+    text-decoration: none;
+    position: relative;
+}
+
+    .description_title_underline:after {
+        position: absolute;
+        content: "";
+        height: 5px;
+        bottom: -8px;
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        width: 12%;
+        background: #05c4f4;
+    }
+
+.description_text {
+    box-sizing: border-box;
+    padding: 35px 50px 0;
+    text-align: justify;
+}
+
+
+.non_emergency_cases_wrapper {
+}
+
+
+.title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.title_underline {
+    text-decoration: none;
+    position: relative;
+}
+
+    .title_underline:after {
+        position: absolute;
+        content: '';
+        height: 5px;
+        /* adjust this to move up and down. you may have to adjust the line height of the paragraph if you move it down a lot. */
+        bottom: -8px;
+        /****** 
+       optional values below 
+       ******/
+        /* center - (optional) use with adjusting width   */
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        width: 80%;
+        background: #05c4f4;
+        /* optional animation */
+        -o-transition: .5s;
+        -moz-transition: .5s;
+        -webkit-transition: .5s;
+        transition: .5s;
+    }
+
+.second_section_wrapper p {
+    margin: auto;
+    width: 70%;
+    text-align: justify;
+    margin-bottom: 30px;
+}
+
+
+.second_section_body {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+.second_section_part1 {
+    margin: 0 70px;
+    padding: 0 !important;
+}
+
+    .second_section_part1 li {
+        list-style-type: none;
+    }
+
+
+.login_option_wrapper {
+    margin: 20px 0;
+    text-align: center
+}
+
+    .login_option_wrapper h2 {
+        margin: 35px 0;
+    }
+
+
+.login_as_doctor, .login_as_patient {
+    position: relative;
+    padding: 10px;
+    align-items: stretch;
+}
+
+    .login_as_doctor img {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    .login_as_doctor a {
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 250px;
+        height: 50px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login_as_doctor:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .login_as_patient:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .login_as_patient img {
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+
+    .login_as_patient a {
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 250px;
+        height: 50px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+.form-wrapper {
+    width: 650px;
+    margin: 0 auto;
+    box-shadow: 3px 2px 9px 0px rgba(0, 0, 0, 0.2), 17px 7px 17px 0 rgba(0, 0, 0, 0.19);
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+    .form-wrapper hr {
+        border: 1px solid black !important;
+        width: 100% !important;
+    }
+
+.form-group-wrapper {
+    width: 400px;
+}
+
+
+
+    .form-group-wrapper label {
+        max-width: 100% !important;
+    }
+
+.reg-button-color {
+    color: white;
+    background-color: #33b5e5 !important;
+    width: 100% !important;
+}
+
+
+
+/*doctor page ---------------------------------- section*/
+
+.middle_section_body {
+    position: relative;
+}
+
+/*.middle_section_body::after {
+        content: "";
+        position: absolute;
+        background-color: #666666;
+        width: 135.5%;
+        height: 1px;
+        bottom: -30px;
+        left: 50%;
+        transform: translate(-50%);
+    }*/
+
+.card_display {
+    display: flex;
+    position: relative;
+    box-shadow: 3px 2px 7px 0px rgba(0, 0, 0, 0.2), 17px 7px 23px 0 rgba(0, 0, 0, 0.10);
+    padding: 5px;
+    margin-top: 6px;
+    margin-bottom: 15px;
+}
+
+.card_img {
+    overflow: hidden;
+}
+
+
+    .card_img img {
+        width: 100%;
+    }
+
+.card_img_sec {
+    display: grid;
+}
+
+.doc_left_part a {
+    margin-top: 10px;
+}
+
+.card_img_sec a {
+    text-align: center !important;
+}
+
+.card_img_sec img {
+    width: 150px;
+    height: 250px;
+}
+
+.card_text_sec {
+    display: grid;
+    margin: 0 30px;
+}
+
+.doc_text label {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.card_text_sec button {
+    font-weight: 500;
+    color: #000000;
+    background-color: #05C4F4;
+}
+
+.side_body {
+    margin-top: 30px;
+    position: relative;
+    border-left: 1.5px solid black;
+    padding-left: 30px;
+}
+
+.side_body_form {
+    position: relative;
+}
+
+.specified_part {
+    margin-top: 50px;
+}
+
+.heading {
+    font-size: 25px;
+    font-weight: bold;
+    color: #05C4F4;
+    margin-left: 30px;
+    margin-top: 50px;
+}
+
+    .heading::after {
+        content: "";
+        position: absolute;
+        background-color: #41C7DB;
+        width: 40%;
+        height: 2px;
+        left: 35%;
+        transform: translate(-50%);
+    }
+
+.specified_part_list {
+    display: grid;
+    margin-left: 30px;
+}
+
+.specified_part_text h3 {
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    border-bottom: 1px solid #666666;
+    text-align: left;
+    padding-top: 30px;
+}
+
+.justiy_context {
+    justify-content: center;
+}
+
+/*doctor page ---------------------------------- section*/
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%; /* Could be more or less, depending on screen size */
+}
+
+.payment-btn {
+    color: white;
+    background-color: #33b5e5 !important;
+    width: 100% !important;
+}
+
+/* The Close Button */
+.close {
+    color: red;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+/*doctor profile view*/
+
+.doctor_profile_wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 40px;
+}
+
+.details_section {
+    padding: 6px 10px;
+    box-shadow: -1px -1px 1px 0px rgba(0, 0, 0, 0.2), 7px 7px 0px 0 rgba(0, 0, 0, 0.19);
+}
+
+.doctor_profile_wrapper div {
+    margin-right: 20px;
+}
+
+.doctor_profile_wrapper img {
+    width: 400px;
+}
+
+.doctor_profile_wrapper p {
+    font-size: 20px;
+}
+
+.doctor_profile_wrapper .img_section, .details_section {
+    flex: 1;
+    max-width: 400px;
+}
+
+.doctor_profile_wrapper .details_section {
+    text-align: left;
+}
+
+.sp_heading {
+    display: inline-block;
+    position: relative;
+    color: #41C7DB;
+    font-size: 25px;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    /*text-align: center;*/
+    /*padding-top: 15px;*/
+}
+
+
+
+.custom-underline:active {
+    color: #fff;
+    text-decoration: none;
+}
+
+.custom-underline::after {
+    content: "";
+    position: absolute;
+    top: 65%;
+    height: 2px;
+    width: 100%;
+    left: 5%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+.payment-method-section img {
+    width: 60px;
+}
+
+img.ui-datepicker-trigger {
+    width: 32px;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+    margin-left: 1px;
+}
+
+
+/*
+    Doctor Profile
+*/
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+    /* The navigation menu links */
+    .sidenav a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        font-family: Gotham;
+        color: #818181;
+        display: block;
+        transition: 0.3s
+    }
+
+        /* When you mouse over the navigation links, change their color */
+        .sidenav a:hover, .offcanvas a:focus {
+            color: #f1f1f1;
+        }
+
+    /* Position and style the close button (top right corner) */
+    .sidenav .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+    }
+
+.sidenav-bread {
+    display: block;
+    background: #9cdede2e;
+}
+
+    .sidenav-bread img {
+        width: 60px;
+        padding: 10px;
+    }
+
+.navbar-logo-doctor {
+    padding: 20px;
+    font-weight: bold !important;
+    font-size: 40px !important;
+    color: #05C4F4 !important;
+    text-decoration: none !important;
+    margin-right: 15px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+.appointment_wrapper {
+    margin: 5px;
+    padding: 10px 0 0 10px;
+    border: 1px solid;
+    box-shadow: 3px 5px #888888;
+}
+
+    .appointment_wrapper p {
+        font-size: 18px;
+        margin: 1px !important;
+    }
+
+    .appointment_wrapper button {
+        margin: 10px 0;
+    }
+
+        .appointment_wrapper button a {
+            margin: 10px 0 !important;
+            color: white !important;
+        }
+
+
+/**/
+.doctor-profile-image {
+    width: 100%;
+}
+
+.control-label {
+    font-weight: 700;
+}
+
+
+.search_wrapper {
+    margin: 5px;
+    padding: 0px;
+}
+
+
+/*
+    Patient Profile
+*/
+
+.p-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+    .p-heading button {
+        margin-top: 15px;
+    }
+
+    .p-heading a {
+        color: white;
+        text-decoration: none;
+    }
+
+
+.left-side {
+}
+
+
+.confirm-wrapper {
+    color: #228a2a;
+}
+
+.page-link {
+    z-index: 0 !important;
+}
+
+
+/*Admin*/
+
+.stats-card-body {
+    box-shadow: 3px 2px 7px 0px rgba(0, 0, 0, 0.2), 17px 7px 23px 0 rgba(0, 0, 0, 0.10);
+}
+
+    .stats-card-body p {
+        font-size: 20px;
+    }
+
+.admin-doctor-img-wrapper {
+    padding: 1rem !important;
+}
+
+.admin-doctor-img {
+    width: 100% !important;
+}
+
+.admin-doctor-info {
+    padding: 1rem !important;
+    word-break: break-word;
+}
+
+.admin-doctor-card-right {
+    padding-left: 0px !important;
+}
+
+
+
+
+@media screen and (max-width: 375px) {
+    .second_section_body {
+        display: block;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    .second_section_body {
+        display: block;
+    }
+
+    .middle_section_body {
+        flex-direction: column-reverse;
+    }
+
+    .odabs_doctor_member {
+        width: 50%;
+        text-align: center;
+    }
+
+    .video_conference img {
+        width: 100%;
+        margin-right: 40px;
+        border-radius: 3%;
+    }
+
+    .video_conference {
+        display: block;
+        justify-content: center;
+    }
+
+    .vc_text {
+        width: 100%;
+    }
+
+    .help_center {
+        display: flex;
+        justify-content: center;
+        flex-direction: column-reverse;
+    }
+
+        .help_center img {
+            width: 100%;
+            border-radius: 3%;
+            padding: 0 0px;
+        }
+
+    .help_center_wrapper {
+        padding: 30px;
+    }
+
+    .hc_heading {
+        text-align: left;
+    }
+
+    .hc_heading_underline:after {
+        left: 0;
+    }
+
+    .hc_btn {
+        float: left;
+    }
+}
+
+
+@media screen and (max-width: 1247px) {
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+        .sidenav a {
+            font-size: 18px;
+        }
+}

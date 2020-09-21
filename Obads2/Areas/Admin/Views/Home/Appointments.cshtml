@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Obads2.Models.Appointment>
+
+@{
+    ViewBag.Title = "Appointments";
+}
+<h2 class="text-center mt-3">Appointments</h2>
+
+<div class="container-fluid  p-5">
+
+    <div class="table-responsive">
+
+        <table id="myTable" class="hover stripe">
+            <thead>
+                <tr>
+                    <th>Doctor Name</th>
+                    <th>Patient Name</th>
+                    <th>Appointment Time</th>
+                    <th>Payment</th>
+                    <th>Amount</th>
+                    <th>Prescription</th>
+                </tr>
+            </thead>
+
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(a.doctor.User.Name, "DoctorProfile", "Home", new { area = "Admin", id = a.doctor.Id }, null)</td>
+                    <td>@Html.ActionLink(a.patient.User.Name, "PatientProfile", "Home", new { area = "Admin", id = a.patient.Id }, null)</td>
+                    <td>@a.AppointmentTime.ToString("dd-MM-yyyy hh:mm tt") </td>
+                    <td>@a.payment.paymentMethod</td>
+                    <td>@a.payment.amount</td>
+                    <td>
+                        @if (String.IsNullOrEmpty(a.prescription.FileURL))
+                        {
+                            <a class="text-decoration-none text-dark">Not Available Yet</a>
+
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Download", "DownloadPrescription", "Account", new { area = "", id = a.prescription.PrescriptionId }, null)
+
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js"></script>
+    <script src="~/Scripts/moment.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#myTable').DataTable(
+                {
+                    autoWidth: false,
+                    //columns: [{
+                    //    "width": "25%",
+                    //}, {
+                    //    "width": "25%",
+                    //}, {
+                    //    "width": "25%",
+                    //}, {
+                    //    "width": "12%",
+                    //}, {
+                    //    "width": "12%",
+                    //}]
+                });
+
+        });
+
+    </script>
+}

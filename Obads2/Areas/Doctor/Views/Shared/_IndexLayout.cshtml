@@ -1,0 +1,63 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://kit.fontawesome.com/1c17e31fd4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/timepicker@1.13.14/jquery.timepicker.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid.min.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.3/jsgrid-theme.min.css" />
+    <link href="~/Content/jquery-ui-1.12.1/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+    <link href="//cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="container-fluid body-content">
+
+        <div id="mySidenav" class="sidenav">
+            <a class="navbar-logo-doctor nav-link" href="#">ODABS</a>
+
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            @Html.ActionLink("Appointments", "Index", "DoctorAccount", new { area = "Doctor" }, null)
+            @Html.ActionLink("Profile", "UserProfile", "DoctorAccount", new { area = "Doctor" }, null)
+
+            @using (Html.BeginForm("LogOff", "DoctorAccount", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <a href="javascript:document.getElementById('logoutForm').submit()" class="">Log Out</a>
+            }
+
+        </div>
+
+
+        <!-- Use any element to open the sidenav -->
+
+        <div class="sidenav-bread">
+            <span class="" onclick="openNav()">
+                <img src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png">
+            </span>
+        </div>
+
+
+
+        @RenderBody()
+        <hr />
+        <div id="">
+            @Html.Partial("_Footer")
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
