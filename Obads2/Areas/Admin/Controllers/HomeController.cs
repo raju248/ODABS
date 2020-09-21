@@ -118,27 +118,8 @@ namespace Obads2.Areas.Admin.Controllers
             return View(model);
         }
 
-        public ActionResult Appointments(string q, int? id)
+        public ActionResult Appointments()
         {
-
-            if (!String.IsNullOrEmpty(q))
-            {
-                if(q.Equals("Doctor"))
-                {
-                    var model1 = _db.Appointments.Where(a=>a.doctor.Id==id).ToList();
-                    return View(model1);
-                }
-                else if(q.Equals("Patient"))
-                {
-                    var model1 = _db.Appointments.Where(a => a.patient.Id == id).ToList();
-                    return View(model1);
-                }
-                else
-                {
-                    return View();
-                }
-            }
-
             var model = _db.Appointments.ToList();
             return View(model);
         }

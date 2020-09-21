@@ -67,7 +67,7 @@ namespace Obads2.Areas.Doctor.Controllers
             }
         }
 
-        public ActionResult Index(string date, int? page)
+        public ActionResult Index()
         {
             string userId = User.Identity.GetUserId();
             var model = _db.Appointments.Where(x => x.doctor.User.Id.Equals(userId)).ToList();

@@ -14,10 +14,10 @@
 
     @using (Html.BeginForm("AddPrescription", "DoctorAccount"))
     {
+        @Html.HiddenFor(model => model.Id)
 
         <div class="row">
             <div class="col-12 table-responsive">
-                @Html.HiddenFor(model => model.Id)
 
                 <table class="table pres-table table-striped" id="Medicine">
                     <thead>
