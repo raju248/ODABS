@@ -158,10 +158,21 @@ namespace Obads2.Areas.Admin.Controllers
             return View(model);
         }
 
-        public ActionResult Patients(int? page)
+        public ActionResult Patients(string search, int? page)
         {
-            var doctors = _db.Patients.ToList().ToPagedList(page ?? 1, 6);
-            return View(doctors);
+            if(!String.IsNullOrEmpty(search))
+            {
+                var patients = _db.Patients.Where(p=>p.User.Name.ToLower().Contains(search.ToLower())||
+                p.User.Email.ToLower().Contains(search.ToLower())||
+                p.User.PhoneNumber.ToLower().Contains(search.ToLower())
+                ).ToList().ToPagedList(page ?? 1, 6);
+
+                return View(patients);
+            }
+
+            var patient = _db.Patients.ToList().ToPagedList(page ?? 1, 6);
+
+            return View(patient);
         }
 
         public ActionResult PatientProfile(int id)

@@ -70,16 +70,7 @@ namespace Obads2.Areas.Doctor.Controllers
         public ActionResult Index(string date, int? page)
         {
             string userId = User.Identity.GetUserId();
-
-            if (String.IsNullOrEmpty(date) == false)
-            {
-                DateTime dx = DateTime.Parse(date);
-
-                var model1 = _db.Appointments.Where(x => DbFunctions.TruncateTime(x.AppointmentTime) == dx || date == null && x.doctor.User.Id.Equals(userId)).ToList().ToPagedList(page ?? 1, 3);
-                return View(model1);
-            }
-
-            var model = _db.Appointments.Where(x => x.doctor.User.Id.Equals(userId)).ToList().ToPagedList(page ?? 1, 3);
+            var model = _db.Appointments.Where(x => x.doctor.User.Id.Equals(userId)).ToList();
             return View(model);
         }
 
@@ -223,9 +214,13 @@ namespace Obads2.Areas.Doctor.Controllers
 
         public ActionResult AddPrescription(int id)
         {
+            var prescription = _db.Prescriptions.Where(a => a.PrescriptionId == id).FirstOrDefault();
             var model = new PrescriptionViewModel
             {
-                Id = id
+                Id = id,
+                patientName = prescription.appointment.patient.User.Name,
+                patientPhoneNumber = prescription.appointment.patient.User.PhoneNumber,
+                appointmentTime = prescription.appointment.AppointmentTime.ToString("dd-MMMM-yy hh:mm tt")
             };
 
             return View(model);
@@ -292,9 +287,10 @@ namespace Obads2.Areas.Doctor.Controllers
                 prescription.FileURL = filePathString;
                 _db.SaveChanges();
 
-                return View(model);
-            }
+                TempData["Success"] = "Prescription added for appointment no. " + model.Id;
 
+                return RedirectToAction("Index", "DoctorAccount");
+            }
 
 
             return View(model);

@@ -298,6 +298,11 @@ textarea {
     position: relative;
 }
 
+
+.pres-table{
+    min-width: 900px;
+}
+
     .blog_heading_underline:after {
         position: absolute;
         content: '';
@@ -632,7 +637,7 @@ textarea {
     display: flex;
     position: relative;
     box-shadow: 3px 2px 7px 0px rgba(0, 0, 0, 0.2), 17px 7px 23px 0 rgba(0, 0, 0, 0.10);
-    padding: 5px;
+    padding: 15px;
     margin-top: 6px;
     margin-bottom: 15px;
 }

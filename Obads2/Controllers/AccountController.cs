@@ -79,7 +79,7 @@ namespace Obads2.Controllers
         public ActionResult Appointments(int? page)
         {
             var userId = User.Identity.GetUserId();
-            var model = _db.Appointments.Where(a=>a.patient.User.Id.Equals(userId)).ToList();
+            var model = _db.Appointments.Where(a => a.patient.User.Id.Equals(userId)).ToList();
             return View(model);
         }
         //
@@ -116,6 +116,10 @@ namespace Obads2.Controllers
                         {
                             return RedirectToLocal(returnUrl);
                         }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Invalid username or password.");
                     }
 
                 }

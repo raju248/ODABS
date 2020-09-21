@@ -45,15 +45,12 @@ namespace Obads2.Areas.Doctor.Models
 
     public class PrescriptionViewModel
     {
+        public string patientName { get; set; } 
+        public string patientPhoneNumber { get; set; } 
+        public string appointmentTime { get; set; } 
+
         public int Id { get; set; }
         public List<string> medicines { get; set; }
-        //public List<Times> times = new List<Times>
-        //{
-        //    new Times{ id = 0, time = "Morning", IsSelected = false },
-        //    new Times{ id = 1, time = "Afternoon", IsSelected = false },
-        //    new Times{ id = 2, time = "Evening", IsSelected = false },
-        //    new Times{ id = 3, time = "Night", IsSelected = false },
-        //};
 
         public List<string> quantity { get; set; }
 

@@ -9,7 +9,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-7 mt-3 ">
+        <div class="col-10 col-md-7 col-sm-12 mt-3  ">
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -108,10 +108,10 @@
 
                     <div class="form-group">
                         <div class="row">
-                            <div class="col-md-offset-2 col-md-5">
+                            <div class="col-md-offset-2 col-md-5 mt-1">
                                 <button type="submit" value="Save" class="btn btn-success btn-block"><i class="fas fa-save"></i>  Save</button>
                             </div>
-                            <div class="col-md-offset-2 col-md-5">
+                            <div class="col-md-offset-2 col-md-5 mt-1">
                                 @Html.ActionLink("Back", "UserProfile", "DoctorAccount", new { area = "Doctor" }, new { @class = " btn btn-block btn-primary" })
                             </div>
 

@@ -1,6 +1,5 @@
-﻿@using PagedList.Mvc;
-@using PagedList;
-@model  IPagedList<Obads2.Models.Appointment>
+﻿
+@model  IEnumerable<Obads2.Models.Appointment>
 
 @{
     ViewBag.Title = "Index";
@@ -29,7 +28,17 @@
                 </div>
 
             </div>*@
+
+
         <div class="row ">
+
+            @if (TempData["Success"] != null)
+            {
+                <div class="alert alert-success col-md-12 p-3 mt-3" role="alert">
+                    @TempData["Success"]
+                </div>
+            }
+
 
             <div class="col-12">
 
@@ -58,7 +67,7 @@
 
                                 <tr>
                                     <td scope="row">@ap.AppointmentId</td>
-                                    <td> @Html.ActionLink(ap.doctor.User.Name, "DoctorProfile", "Home", new { id = ap.doctor.Id, area = "" }, new { @class = "text-decoration-none" })  </td>
+                                    <td> @Html.ActionLink(ap.patient.User.Name, "PatientProfile", "Home", new { id = ap.patient.Id, area = "" }, new { @class = "text-decoration-none" })  </td>
                                     <td>@ap.patient.User.Gender</td>
                                     <td>@time[0] @time[1] @time[2]</td>
                                     <td>@ap.patient.User.Email</td>
@@ -90,43 +99,43 @@
 
             @*<ul class="pagination mt-3">
 
-                    @if (Model.PageNumber > 1)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber-1 })">Previous</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item disabled">
-                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber-1 })">Previous</a>
-                        </li>
-                    }
+            @if (Model.PageNumber > 1)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber-1 })">Previous</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber-1 })">Previous</a>
+                </li>
+            }
 
 
-                    @for (int i = 1; i <= Model.PageCount; i++)
-                    {
-                        <li class="@(i == Model.PageNumber ? "page-item active" : "page-item")">
-                            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
-                        </li>
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                <li class="@(i == Model.PageNumber ? "page-item active" : "page-item")">
+                    <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                </li>
 
-                    }
+            }
 
-                    @if (Model.PageNumber < Model.PageCount)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber+1 })">Next</a>
-                        </li>
-                    }
-                    else
-                    {
-                        <li class="page-item disabled">
-                            <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber+1 })">Next</a>
-                        </li>
-                    }
+            @if (Model.PageNumber < Model.PageCount)
+            {
+                <li class="page-item">
+                    <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber+1 })">Next</a>
+                </li>
+            }
+            else
+            {
+                <li class="page-item disabled">
+                    <a class="page-link" href="@Url.Action("Index", new { page = Model.PageNumber+1 })">Next</a>
+                </li>
+            }
 
 
-                </ul>*@
+        </ul>*@
         </div>
         @*<div class="row ">
 

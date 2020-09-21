@@ -18,12 +18,20 @@
                 </div>
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <button type="submit" class="btn btn-primary search-btn" value="SearchBy"><i class="fas fa-search"></i> Search</button>
+            </div>
+
+            <div class="col-md-3 mt-3 mt-md-0 mt-sm-4 col-sm-12">
+
+                <a href="@Url.Action("DocRegister","AdminAccount")" class="btn btn-block btn-outline-primary"><i class="fas fa-user-plus"></i> Add Doctor</a>
+
             </div>
         }
 
-    </div>
+
+
+    </div>    
 
 
     <div class="row">
@@ -123,13 +131,13 @@
                     @if (Model.PageNumber > 1)
                     {
                         <li class="page-item">
-                            <a class="page-link" href="@Url.Action("Doctors", new { page = Model.PageNumber-1 })">Previous</a>
+                            <a class="page-link" href="@Url.Action("Doctors", new { page = Model.PageNumber-1 , search = Request.QueryString["search"]})">Previous</a>
                         </li>
                     }
                     else
                     {
                         <li class="page-item disabled">
-                            <a class="page-link" href="@Url.Action("Doctors", new { page = Model.PageNumber-1 })">Previous</a>
+                            <a class="page-link" href="@Url.Action("Doctors", new { page = Model.PageNumber-1 , search = Request.QueryString["search"]})">Previous</a>
                         </li>
                     }
 
@@ -137,7 +145,7 @@
                     @for (int i = 1; i <= Model.PageCount; i++)
                     {
                         <li class="@(i == Model.PageNumber ? "page-item active" : "page-item")">
-                            <a class="page-link" href="@Url.Action("Doctors", new { page = i })">@i</a>
+                            <a class="page-link" href="@Url.Action("Doctors", new { page = i , search = Request.QueryString["search"]})">@i</a>
                         </li>
 
                     }
@@ -145,13 +153,13 @@
                     @if (Model.PageNumber < Model.PageCount)
                     {
                         <li class="page-item">
-                            <a class="page-link" href="@Url.Action("Doctors", new { page = Model.PageNumber+1 })">Next</a>
+                            <a class="page-link" href="@Url.Action("Doctors", new { page = Model.PageNumber+1 , search = Request.QueryString["search"]})">Next</a>
                         </li>
                     }
                     else
                     {
                         <li class="page-item disabled">
-                            <a class="page-link" href="@Url.Action("Doctors", new { page = Model.PageNumber+1 })">Next</a>
+                            <a class="page-link" href="@Url.Action("Doctors", new { page = Model.PageNumber+1 , search = Request.QueryString["search"]})">Next</a>
                         </li>
                     }
                 </ul>
