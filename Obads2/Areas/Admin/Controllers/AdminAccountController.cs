@@ -336,16 +336,6 @@ namespace Obads2.Areas.Admin.Controllers
         }
 
 
-        public FileResult DownloadPrescription(int id)
-        {
-            var prescription = _db.Prescriptions.Where(p => p.PrescriptionId == id).FirstOrDefault();
-            string path = Server.MapPath(prescription.FileURL);
-
-            byte[] fileBytes = System.IO.File.ReadAllBytes(path);
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, prescription.FileURL);
-
-        }
-
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
