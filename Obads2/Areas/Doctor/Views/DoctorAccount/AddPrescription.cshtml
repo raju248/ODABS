@@ -60,6 +60,73 @@
     <script>
 
 
+            function removeRow(id) {
+                var controlToBeRemoved = "#trMedicine" + id;
+                $(controlToBeRemoved).remove();
+
+                var x = 0;
+                $("input.medicine-input").each(function (e) {
+                    $(this).attr('name', 'medicines[' + x + ']');
+                    $(this).attr('id', 'medicines' + x);
+
+                    x++;
+                    console.log('x ' + x);
+                    
+                });
+
+                x = 0;
+                $("input.days-input").each(function (e) {
+                    $(this).attr('name', 'days[' + x + ']');
+                    $(this).attr('id', 'days' + x);
+
+                    x++;
+                    console.log('x ' + x);
+                    
+                });
+
+                x = 0;
+                $("input.times-input").each(function (e) {
+                    $(this).attr('name', 'times[' + x + ']');
+                    $(this).attr('id', 'times' + x);
+
+                    x++;
+                    console.log('x ' + x);
+                    
+                });
+
+                x = 0;
+                $("input.quantity-input").each(function (e) {
+                    $(this).attr('name', 'quantity[' + x + ']');
+                    $(this).attr('id', 'quantity' + x);
+
+                    x++;
+                    console.log('x ' + x);
+                    
+                });
+
+                x = 0;
+                $(".index").each(function (e) {
+                    $(this).attr('value',  x);
+                    x++;
+                    console.log('x ' + x);
+                });
+
+                x = 0;
+                $(".trrow").each(function (e) {
+                    $(this).attr('id',  'trMedicine'+x);
+                    x++;
+                    console.log('x ' + x);
+                });
+
+
+                x = 0;
+                $(".remove").each(function (e) {
+                    $(this).attr('onclick',  'removeRow('+x+');');
+                    x++;
+                    console.log('x ' + x);
+                });
+            }
+
         /* Set the width of the side navigation to 250px */
         function openNav() {
             document.getElementById("mySidenav").style.width = "300px";
@@ -72,7 +139,7 @@
 
 
         $(document).ready(function () {
-            
+
             var disable = true;
 
 
@@ -82,31 +149,38 @@
             });
 
             $("#save").hover(() => {
-                $("input").each(function (e) {
+                $("input.medicine-input").each(function (e) {
                     console.log($(this).val());
                 });
             })
 
-
+            //var i = 0;
             $("#Add").click(() => {
                 //var f = $("<input>").attr('type', 'textbox').attr('name', 'medicines[' + i + "]").attr('class', 'form-control medicine-input').attr('id', i);
+                @{
+                    Model.medicines.Add("Raju");
+                    Model.times.Add("Raju");
+                    Model.quantity.Add("Raju");
+                    Model.days.Add("Raju");
+                }
+
+
+
 
                 var i = $("#tbMedicine").children("tr").length;
 
-
-                var element = "<tr><td><input class='form-control medicine-input' type ='textbox' name = 'medicines[" + i + "]' id =medicine" + i + " required></input></td>";
-                var days = "<td><input class='form-control medicine-input' type ='textbox' name = 'quantity[" + i + "]' id =quantity" + i + " required></input></td>";
-                var quantity = "<td><input class='form-control medicine-input' type ='textbox' name = 'days[" + i + "]' id =days" + i + " required></input></td>";
-                var times = "<td><input class='form-control medicine-input' type ='textbox' name = 'times[" + i + "]' id =times" + i + " required></input></td>";
-                var action = "<td> <button class='btn btn-outline-danger remove'>Remove</button></td></tr>";
+                var indexcell = "<tr class='trrow' id='trMedicine"+i+"'><td style='display:none'> <input class='index' name='medicine.index' type='hidden' value='" + i + "' /></td>";
+                var element = "<td><input class='form-control medicine-input' type ='textbox' name = 'medicines[" + i + "]' id =medicine" + i + " required></input></td>";
+                var days = "<td><input class='form-control days-input' type ='textbox' name = 'quantity[" + i + "]' id =quantity" + i + " required></input></td>";
+                var quantity = "<td><input class='form-control quantity-input' type ='textbox' name = 'days[" + i + "]' id =days" + i + " required></input></td>";
+                var times = "<td><input class='form-control times-input' type ='textbox' name = 'times[" + i + "]' id =times" + i + " required></input></td>";
+                var action = "<td> <button class='btn btn-outline-danger remove' onclick='removeRow("+i+");'>Remove</button></td></tr>";
 
                 console.log(i);
 
-                $(" tbody").append(element + days + quantity + times + action);
 
-                if (disable) {
-                    disable = false;
-                }
+                $("tbody").append(indexcell + element + days + quantity + times + action);
+                //i++;
             });
 
 

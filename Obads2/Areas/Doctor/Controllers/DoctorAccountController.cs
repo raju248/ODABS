@@ -220,7 +220,11 @@ namespace Obads2.Areas.Doctor.Controllers
                 Id = id,
                 patientName = prescription.appointment.patient.User.Name,
                 patientPhoneNumber = prescription.appointment.patient.User.PhoneNumber,
-                appointmentTime = prescription.appointment.AppointmentTime.ToString("dd-MMMM-yy hh:mm tt")
+                appointmentTime = prescription.appointment.AppointmentTime.ToString("dd-MMMM-yy hh:mm tt"),
+                medicines = new List<string>(),
+                days = new List<string>(),
+                times = new List<string>(),
+                quantity = new List<string>(),
             };
 
             return View(model);
