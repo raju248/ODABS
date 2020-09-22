@@ -126,6 +126,8 @@ namespace Odabs2.Controllers
                 return Json(new { success = true });
             }
 
+
+
             return RedirectToAction("Doctor", "Home");
         }
 
