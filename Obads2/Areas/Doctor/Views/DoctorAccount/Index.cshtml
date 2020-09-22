@@ -67,7 +67,7 @@
 
                                 <tr>
                                     <td scope="row">@ap.AppointmentId</td>
-                                    <td> @Html.ActionLink(ap.patient.User.Name, "PatientProfile", "Home", new { id = ap.patient.Id, area = "" }, new { @class = "text-decoration-none" })  </td>
+                                    <td> @Html.ActionLink(ap.patient.User.Name, "PatientProfile", "Home", new { id = ap.patient.Id, area = "Doctor" }, new { @class = "text-decoration-none" })  </td>
                                     <td>@ap.patient.User.Gender</td>
                                     <td>@time[0] @time[1] @time[2]</td>
                                     <td>@ap.patient.User.Email</td>

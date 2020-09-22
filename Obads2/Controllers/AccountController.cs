@@ -17,7 +17,7 @@ using PagedList.Mvc;
 
 namespace Obads2.Controllers
 {
-    //[Authorize]
+    [Authorize(Roles = "Patient")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -79,7 +79,7 @@ namespace Obads2.Controllers
         public ActionResult Appointments(int? page)
         {
             var userId = User.Identity.GetUserId();
-            var model = _db.Appointments.Where(a => a.patient.User.Id.Equals(userId)).ToList();
+            var model = _db.Appointments.Where(a => a.patient.User.Id.Equals(userId)).Where(d => d.doctor != null).ToList();
             return View(model);
         }
         //

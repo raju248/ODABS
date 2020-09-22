@@ -91,6 +91,8 @@ namespace Odabs2.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Patient")]
+
         [HttpPost]
         public ActionResult Pay(Booking b)
         {
@@ -127,6 +129,7 @@ namespace Odabs2.Controllers
             return RedirectToAction("Doctor", "Home");
         }
 
+        [Authorize(Roles = "Patient")]
 
         [HttpPost]
         public ActionResult getNextFreeTime(Booking b)

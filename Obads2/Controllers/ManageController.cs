@@ -10,7 +10,7 @@ using Obads2.Models;
 
 namespace Obads2.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Patient")]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

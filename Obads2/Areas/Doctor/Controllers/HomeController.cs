@@ -7,11 +7,11 @@ using System.Web.Mvc;
 
 namespace Obads2.Areas.Doctor.Controllers
 {
+    [Authorize(Roles ="Doctor")]
     public class HomeController : Controller
     {
 
         ApplicationDbContext _db;
-
 
         public HomeController()
         {
@@ -27,8 +27,7 @@ namespace Obads2.Areas.Doctor.Controllers
         public ActionResult PatientProfile(int id)
         {
             var patient = _db.Patients.Where(p => p.Id == id).FirstOrDefault();
-
-            return View();
+            return View(patient);
         }
     }
 }

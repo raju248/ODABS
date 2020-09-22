@@ -66,6 +66,7 @@ namespace Obads2.Areas.Doctor.Controllers
                 _userManager = value;
             }
         }
+        [Authorize(Roles = "Doctor")]
 
         public ActionResult Index()
         {
@@ -73,6 +74,7 @@ namespace Obads2.Areas.Doctor.Controllers
             var model = _db.Appointments.Where(x => x.doctor.User.Id.Equals(userId)).ToList();
             return View(model);
         }
+        [Authorize(Roles = "Doctor")]
 
         public ActionResult Edit()
         {
@@ -103,6 +105,7 @@ namespace Obads2.Areas.Doctor.Controllers
             return View(model);
 
         }
+        [Authorize(Roles = "Doctor")]
 
         [HttpPost]
         public ActionResult Edit(DoctorEditViewModel model)
@@ -129,6 +132,7 @@ namespace Obads2.Areas.Doctor.Controllers
             return RedirectToAction("UserProfile", "DoctorAccount");
         }
 
+        [Authorize(Roles = "Doctor")]
 
         [HttpPost]
         public string GetAppointments()
@@ -140,12 +144,14 @@ namespace Obads2.Areas.Doctor.Controllers
             return s;
         }
 
+        [Authorize(Roles = "Doctor")]
 
         public ActionResult Cancel(int id)
         {
             return RedirectToAction("Index", "DoctorAccount", new { area = "Doctor" });
         }
 
+        [Authorize(Roles = "Doctor")]
 
         public ActionResult UserProfile()
         {
@@ -155,6 +161,7 @@ namespace Obads2.Areas.Doctor.Controllers
 
             return View(model);
         }
+        [AllowAnonymous]
 
         public ActionResult Login()
         {
@@ -211,6 +218,7 @@ namespace Obads2.Areas.Doctor.Controllers
         }
 
 
+        [Authorize(Roles = "Doctor")]
 
         public ActionResult AddPrescription(int id)
         {
@@ -229,6 +237,9 @@ namespace Obads2.Areas.Doctor.Controllers
 
             return View(model);
         }
+
+
+        [Authorize(Roles = "Doctor")]
 
         [HttpPost]
         public ActionResult AddPrescription(PrescriptionViewModel model)
@@ -301,6 +312,7 @@ namespace Obads2.Areas.Doctor.Controllers
 
         }
 
+        [Authorize(Roles = "Doctor")]
 
         public FileResult DownloadPrescription(int id)
         {

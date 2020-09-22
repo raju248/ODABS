@@ -57,7 +57,7 @@ namespace Obads2.Areas.Admin.Controllers
             }
         }
 
-
+        [Authorize(Roles ="Admin")]
         public ActionResult MyProfile()
         {
             string id = User.Identity.GetUserId();
@@ -65,6 +65,7 @@ namespace Obads2.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit()
         {
             var userId = User.Identity.GetUserId();
@@ -88,6 +89,7 @@ namespace Obads2.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
 
         [HttpPost]
         public ActionResult Edit(AdminAccountEditViewModel model)
@@ -230,7 +232,7 @@ namespace Obads2.Areas.Admin.Controllers
 
         //
         // GET: Admin/Account/Register
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult DocRegister()
         {
             var model = new DocRegisterViewModel();
@@ -243,7 +245,7 @@ namespace Obads2.Areas.Admin.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DocRegister(DocRegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -295,7 +297,7 @@ namespace Obads2.Areas.Admin.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         public FileResult DownloadPrescription(int id)
         {
             var prescription = _db.Prescriptions.Where(p => p.PrescriptionId == id).FirstOrDefault();
@@ -306,6 +308,7 @@ namespace Obads2.Areas.Admin.Controllers
 
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult ChangePassword()
         {
             return View();

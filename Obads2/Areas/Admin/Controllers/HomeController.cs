@@ -11,6 +11,7 @@ using System.Web.Mvc;
 
 namespace Obads2.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class HomeController : Controller
     {
 
@@ -87,6 +88,8 @@ namespace Obads2.Areas.Admin.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Admin")]
+
         [HttpPost]
         public ActionResult EditDoctorAccount(DoctorEditViewModel model)
         {
@@ -120,9 +123,11 @@ namespace Obads2.Areas.Admin.Controllers
 
         public ActionResult Appointments()
         {
-            var model = _db.Appointments.ToList();
+            var model = _db.Appointments.Where(ap=>ap.doctor!=null).ToList();
             return View(model);
         }
+
+        [Authorize(Roles = "Admin")]
 
         [HttpGet]
         public String getAppointments()
@@ -132,6 +137,7 @@ namespace Obads2.Areas.Admin.Controllers
             return jsonString;
         }
 
+        [Authorize(Roles = "Admin")]
 
         public ActionResult DoctorProfile(int id)
         {
@@ -156,11 +162,15 @@ namespace Obads2.Areas.Admin.Controllers
             return View(patient);
         }
 
+        [Authorize(Roles = "Admin")]
+
         public ActionResult PatientProfile(int id)
         {
             var model = _db.Patients.Where(d => d.Id == id).FirstOrDefault();
             return View(model);
         }
+
+        [Authorize(Roles = "Admin")]
 
         public ActionResult EditPatientAccount(string id)
         {
@@ -182,6 +192,8 @@ namespace Obads2.Areas.Admin.Controllers
 
             return View(model);
         }
+
+        [Authorize(Roles = "Admin")]
 
         [HttpPost]
         public ActionResult EditPatientAccount(EditViewModel model)
