@@ -18,6 +18,19 @@ textarea {
 }
 
 
+.circular--portrait {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+    .circular--portrait img {
+        width: 100%;
+        height: auto;
+    }
+
 .navbar-logo {
     font-weight: bold;
     font-size: 40px;
@@ -105,21 +118,21 @@ textarea {
     text-align: center;
 }
 
-.odabs_doctor_img {
+.p-s {
     position: absolute;
     box-sizing: border-box;
     position: relative;
     margin-left: auto;
     margin-right: auto;
     display: block;
-    height: 190px; /* [1.1] Set it as per your need */
-    width: 100%;
+    height: 150px; /* [1.1] Set it as per your need */
+    width: 150px;
     overflow: hidden; /* [1.2] Hide the overflowing of child elements */
     /*border: 1px solid red;*/
     border-radius: 100%;
 }
 
-    .odabs_doctor_img img {
+    p img {
         position: relative;
         bottom: 11px;
         transform-origin: 43% 46%;
